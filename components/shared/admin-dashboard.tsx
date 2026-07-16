@@ -312,7 +312,7 @@ export function AdminDashboard({ initialProperties }: AdminDashboardProps) {
 
       {/* Modal del Formulario CRUD */}
       <Dialog open={isFormOpen} onOpenChange={(open) => !open && !isPending && setIsFormOpen(false)}>
-        <DialogContent className="max-w-2xl w-[95vw] max-h-[90vh] overflow-y-auto bg-white rounded-xl shadow-2xl p-6">
+        <DialogContent className="max-w-[95vw] sm:max-w-2xl lg:max-w-3xl xl:max-w-4xl max-h-[90vh] overflow-y-auto bg-white rounded-xl shadow-2xl p-4 sm:p-6">
           <DialogHeader className="pb-4 border-b border-border/60">
             <DialogTitle className="text-xl font-bold text-primary">
               {editingId ? "Editar Publicación" : "Crear Nueva Publicación"}

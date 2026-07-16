@@ -94,14 +94,14 @@ export function PropertyDetailModal() {
 
   return (
     <Dialog open={!!selectedProperty} onOpenChange={(open) => !open && setSelectedProperty(null)}>
-      <DialogContent className="max-w-4xl w-[95vw] max-h-[90vh] overflow-y-auto p-0 border-none bg-white rounded-xl shadow-2xl">
+      <DialogContent className="max-w-[95vw] lg:max-w-5xl xl:max-w-6xl max-h-[90vh] overflow-y-auto p-0 border-none bg-white rounded-xl shadow-2xl">
         <DialogHeader className="p-6 pb-2 sr-only">
           <DialogTitle>{selectedProperty.title}</DialogTitle>
           <DialogDescription>Detalles técnicos de la propiedad</DialogDescription>
         </DialogHeader>
 
         {/* Sección de Imagen Principal y Slider */}
-        <div className="relative w-full aspect-[21/9] md:aspect-[2.4/1] bg-black">
+        <div className="relative w-full aspect-[4/3] sm:aspect-[16/9] md:aspect-[2.2/1] lg:aspect-[2.6/1] bg-black">
           {selectedProperty.images.length > 0 ? (
             <img
               src={selectedProperty.images[activeImageIndex]}
@@ -146,20 +146,38 @@ export function PropertyDetailModal() {
         </div>
 
         {/* Cuerpo del Detalle */}
-        <div className="p-6 md:p-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="p-4 sm:p-6 md:p-8 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           
           {/* Información Principal (2/3 de la pantalla en desktop) */}
           <div className="md:col-span-2 space-y-6">
             
             {/* Título y Ubicación */}
             <div className="space-y-2">
-              <h2 className="text-2xl md:text-3xl font-bold text-primary tracking-tight leading-tight">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-primary tracking-tight leading-tight">
                 {selectedProperty.title}
               </h2>
-              <div className="flex items-center gap-1.5 text-foreground/75 font-semibold text-sm">
-                <MapPin className="h-4.5 w-4.5 text-accent shrink-0" />
+              <div className="flex items-center gap-1.5 text-foreground/75 font-semibold text-xs sm:text-sm">
+                <MapPin className="h-4 w-4 sm:h-4.5 sm:w-4.5 text-accent shrink-0" />
                 <span>{selectedProperty.locationCity}, {selectedProperty.locationZone}</span>
               </div>
+            </div>
+
+            {/* Precio compacto visible SOLO en móviles (debajo del título para mejor conversión) */}
+            <div className="md:hidden flex items-center justify-between p-3.5 bg-brand-bg-soft/10 rounded-xl border border-border/80">
+              <div className="space-y-0.5">
+                <span className="text-[10px] font-semibold text-foreground/50 uppercase block">Precio Solicitado</span>
+                <div className="text-2xl font-black text-primary tracking-tight">
+                  {prices.primary}
+                </div>
+                {selectedProperty.currency === "USD" && (
+                  <div className="text-xs font-semibold text-foreground/60">
+                    {prices.secondary}
+                  </div>
+                )}
+              </div>
+              <Badge className="bg-primary/10 text-primary border-none font-bold text-xs uppercase px-2.5 py-1">
+                {selectedProperty.propertyType}
+              </Badge>
             </div>
 
             {/* Ficha Técnica Principal */}
