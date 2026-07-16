@@ -19,9 +19,16 @@ export function Navbar({ session }: NavbarProps) {
   const handleNavClick = (operationType: string) => {
     resetFilters()
     setFilters({ operationType })
-    if (pathname !== "/") {
-      router.push("/")
+    
+    // Sincronizar query params de la URL para que el catálogo filtre correctamente vía Server Components
+    const params = new URLSearchParams(window.location.search)
+    if (operationType === "TODOS") {
+      params.delete("operationType")
+    } else {
+      params.set("operationType", operationType)
     }
+    
+    router.push(`/?${params.toString()}`)
   }
 
   const handleLogout = async () => {

@@ -1,7 +1,6 @@
 import { getProperties, type PropertyFilters as FiltersType } from "@/app/actions/property"
 import { PropertyFilters } from "@/components/shared/property-filters"
 import { PropertyCard } from "@/components/shared/property-card"
-import { HeroSearch } from "@/components/shared/hero-search"
 import { Building2, AlertCircle } from "lucide-react"
 
 export const dynamic = "force-dynamic"
@@ -47,8 +46,7 @@ export default async function HomePage({ searchParams }: PageProps) {
 
   return (
     <div className="flex flex-col min-h-screen">
-      {/* Hero Banner con buscador integrado */}
-      <HeroSearch activeOperation={filters.operationType || "TODOS"} />
+
 
       {/* Contenedor del Catálogo */}
       <div className="container mx-auto px-4 py-8 sm:px-6 lg:px-8 flex-1">
