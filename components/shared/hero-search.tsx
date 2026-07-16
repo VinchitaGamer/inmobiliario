@@ -37,22 +37,14 @@ export function HeroSearch({ activeOperation }: HeroSearchProps) {
   }
 
   return (
-    <div className="relative w-full overflow-hidden bg-gradient-to-br from-[#053671] via-[#053671]/95 to-[#B8CDE2]/40 py-16 md:py-24 text-white">
+    <div className="relative w-full overflow-hidden bg-gradient-to-br from-[#053671] via-[#053671]/95 to-[#B8CDE2]/40 py-10 md:py-14 text-white">
       {/* Círculos decorativos de gradiente */}
       <div className="absolute top-0 right-0 h-64 w-64 rounded-full bg-accent/15 blur-3xl" />
       <div className="absolute bottom-0 left-10 h-72 w-72 rounded-full bg-secondary/10 blur-3xl" />
 
-      <div className="container mx-auto px-4 text-center relative z-10 sm:px-6 lg:px-8 space-y-6">
-        {/* Título Principal */}
-        <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight leading-tight max-w-3xl mx-auto drop-shadow-sm">
-          Alquiler, venta y anticrético de inmuebles en Bolivia
-        </h1>
-        <p className="text-sm md:text-base text-white/80 max-w-xl mx-auto font-medium">
-          Encuentra tu próximo hogar en Santa Cruz, La Paz y Cochabamba de manera rápida y segura.
-        </p>
-
+      <div className="container mx-auto px-4 text-center relative z-10 sm:px-6 lg:px-8 space-y-4">
         {/* Pestañas de Operación Estilo Infocasas */}
-        <div className="flex justify-center mt-8">
+        <div className="flex justify-center">
           <div className="flex bg-white/10 backdrop-blur-md p-1 rounded-full border border-white/15 shadow-inner">
             {tabs.map((tab) => (
               <button
