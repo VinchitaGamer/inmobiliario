@@ -1,0 +1,30 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Property {
+  id            String   @id @default(uuid())
+  title         String
+  description   String
+  operationType String   // VENTA, ALQUILER, ANTICRETICO, PROYECTO
+  propertyType  String   // Casa, Departamento, Terreno, Oficina, Local
+  price         Float
+  currency      String   // USD, BOB
+  locationCity  String   // Santa Cruz, La Paz, Cochabamba, etc.
+  locationZone  String   // Equipetrol, Sopocachi, Queru Queru, etc.
+  bedrooms      Int      @default(0)
+  bathrooms     Int      @default(0)
+  area          Float    // Metraje en m²
+  images        String[] // Array de URLs de imágenes
+  features      String[] // Garaje, Piscina, Parrillero, etc.
+  contactPhone  String   // WhatsApp, ej. "+59170000000"
+  isFeatured    Boolean  @default(false)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@map("properties")
+}
