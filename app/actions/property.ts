@@ -78,6 +78,7 @@ export async function getProperties(filters?: PropertyFilters): Promise<ActionRe
       code: 200
     }
   } catch (error) {
+    console.error("Error al obtener las propiedades de la base de datos:", error)
     return {
       success: false,
       data: null,
